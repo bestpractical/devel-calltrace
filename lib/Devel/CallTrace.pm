@@ -138,7 +138,7 @@ sub Devel::CallTrace::called {
     if (exists $DB::sub{$DB::sub}) {
         print STDERR " ($DB::sub{$DB::sub})";
     }
-    print "\n";
+    print STDERR "\n";
 }
 
 =head1 BUGS

@@ -35,13 +35,13 @@ BEGIN { $^P |= 0x01 };
 
 
 package DB;
-
+sub DB{};
 our $CALL_DEPTH = 0;
 
 sub sub {
     local $DB::CALL_DEPTH = $DB::CALL_DEPTH+1;
     warn " " x $DB::CALL_DEPTH . $DB::sub ."\n";
-    return(&{$DB::sub}(@_));
+    &{$DB::sub};
 }
 
 

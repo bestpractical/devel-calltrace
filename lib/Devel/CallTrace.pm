@@ -134,7 +134,11 @@ sub Devel::CallTrace::called {
     my $routine = shift;
     # print STDERR is safe. warn is not. calling any routine 
     # not defined from within the DB:: package will not work. (see perldebguts)
-    print STDERR " " x $depth . $DB::sub ."(".$DB::sub{$DB::sub}.")\n";
+    print STDERR " " x $depth . $DB::sub;
+    if (exists $DB::sub{$DB::sub}) {
+        print STDERR " ($DB::sub{$DB::sub})";
+    }
+    print "\n";
 }
 
 =head1 BUGS

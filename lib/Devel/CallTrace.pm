@@ -36,13 +36,41 @@ use strict;
 no strict 'refs';
 
 use vars qw($SUBS_MATCHING);
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 
 $SUBS_MATCHING = qw/.*/;
 
+# From perldoc perlvar
+# Debugger flags, so you can see what we turn on below.
+#
+# 0x01  Debug subroutine enter/exit.
+# 
+# 0x02  Line-by-line debugging.
+# 
+# 0x04  Switch off optimizations.
+# 
+# 0x08  Preserve more data for future interactive inspections.
+# 
+# 0x10  Keep info about source lines on which a subroutine is defined.
+# 
+# 0x20  Start with single-step on.
+# 
+# 0x40  Use subroutine address instead of name when reporting.
+# 
+# 0x80  Report "goto &subroutine" as well.
+# 
+# 0x100 Provide informative "file" names for evals based on the place they were com-
+#         piled.
+# 
+# 0x200 Provide informative names to anonymous subroutines based on the place they
+#         were compiled.
+# 
+# 0x400 Debug assertion subroutines enter/exit.
+# 
+  
 
 
-BEGIN { $^P |= 0x01 };
+BEGIN { $^P |= (0x01 | 0x80 | 0x100 | 0x200); };
 
 sub import {
 
@@ -106,7 +134,7 @@ sub Devel::CallTrace::called {
     my $routine = shift;
     # print STDERR is safe. warn is not. calling any routine 
     # not defined from within the DB:: package will not work. (see perldebguts)
-    print STDERR " " x $depth . $DB::sub ."\n";
+    print STDERR " " x $depth . $DB::sub ."(".$DB::sub{$DB::sub}.")\n";
 }
 
 =head1 BUGS

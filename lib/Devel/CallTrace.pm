@@ -48,7 +48,7 @@ sub sub {
 
 =head1 TODO
 
-doesn't do the right thign with return values
+Regexps for filtering displayed subs.
 
 =cut
 1;

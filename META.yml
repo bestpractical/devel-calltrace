@@ -1,0 +1,9 @@
+name: Devel-CallTrace
+version: undef
+author: Robert Spier <rspier@pobox.com> &  Jesse Vincent <jesse@bestpractical.com
+license: Perl
+distribution_type: module
+no_index:
+  directory:
+    - inc
+generated_by: Module::Install version 0.36

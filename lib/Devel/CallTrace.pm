@@ -5,9 +5,8 @@ Devel::CallTrace - See what your code's doing
 
 =head1 SYNOPSIS
 
-#!/usr/bin/perl
+#!/usr/bin/perl -d:CallTrace
 
-use Devel::CallTrace;
 package foo;
 
 sub bar {
@@ -37,11 +36,10 @@ BEGIN { $^P |= 0x01 };
 
 package DB;
 
-our $CALL_DEPTH;
+our $CALL_DEPTH = 0;
 
 sub sub {
-    local $DB::CALL_DEPTH;
-    $DB::CALL_DEPTH++;
+    local $DB::CALL_DEPTH = $DB::CALL_DEPTH+1;
     warn " " x $DB::CALL_DEPTH . $DB::sub ."\n";
     return(&{$DB::sub}(@_));
 }

@@ -38,7 +38,7 @@ no strict 'refs';
 use vars qw($SUBS_MATCHING);
 our $VERSION = '1.1';
 
-$SUBS_MATCHING = qw/.*/;
+$SUBS_MATCHING = qr/.*/;
 
 # From perldoc perlvar
 # Debugger flags, so you can see what we turn on below.

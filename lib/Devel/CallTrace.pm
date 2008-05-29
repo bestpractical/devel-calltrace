@@ -73,9 +73,12 @@ $SUBS_MATCHING = qr/.*/;
 BEGIN { $^P |= (0x01 | 0x80 | 0x100 | 0x200); };
 
 sub import {
+    my $self = shift;
+    my $re = shift;
 
-
+    $Devel::CallTrace::SUBS_MATCHING = qr/$re/;
 }
+
 package DB;
 
 # Any debugger needs to have a sub DB. It doesn't need to do anything.

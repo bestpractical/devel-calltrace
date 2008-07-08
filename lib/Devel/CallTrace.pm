@@ -36,7 +36,7 @@ use strict;
 no strict 'refs';
 
 use vars qw($SUBS_MATCHING);
-our $VERSION = '1.1';
+our $VERSION = '1.2';
 
 $SUBS_MATCHING = qr/.*/;
 
@@ -153,7 +153,7 @@ It uses the debugger. How could it not have bugs?
 L<perldebguts>, L<DB>, a licensed therapist.
 
 
-L<trace> - Uses source filters. Scares me.
+L<Devel::XRay> - Uses source filters. Scares me.
 
 L<Devel::TraceCalls> - Very robust API. The code seems to do all sorts of scary
 magic
